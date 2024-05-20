@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="RegisterUser.js" defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #2980b9;
+        }
+
+        .bg-img {
+            width: 100%;
+            height: 100%;
+            background: url('background.jpg') no-repeat center center/cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .content {
+            width: 380px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative; 
+            z-index: 1; 
+        }
+
+        header {
+            font-size: 2.2em;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        
+        .field {
+            position: relative;
+            height: 50px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .field span {
+            position: absolute;
+            left: 10px;
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .field input {
+            width: 100%;
+            height: 100%;
+            padding-left: 40px;
+            padding-right: 10px;
+            border: none;
+            outline: none;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 25px;
+            font-size: 1em;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+        .field input::placeholder {
+            color: #999;
+        }
+
+        .field.space {
+            margin-top: 20px;
+        }
+
+        .show {
+            position: absolute;
+            right: 10px;
+            font-size: 0.9em;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .field input[type="submit"] {
+            background: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .field input[type="submit"]:hover {
+            background: #2980b9;
+        }
+
+        @media (max-width: 400px) {
+            .content {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="bg-img"></div>
+<div class="content">
+    <header>Registration</header>
+    <center>
+        <form id="registrationForm">
+            <div class="field">
+                <span class="fa fa-user"></span>
+                <input id="email" type="text" required placeholder="Email...">
+            </div>
+            <div class="field space">
+                <span class="fa fa-lock"></span>
+                <input id="password" type="password" class="pass-key" required placeholder="Password">
+                <span class="show">SHOW</span>
+            </div>
+            <div class="field space">
+                <span class="fa fa-lock"></span>
+                <input id="repeatPassword" type="password" class="pass-key" required placeholder="Repeat Password...">
+                <span class="show">SHOW</span>
+            </div>
+            <div class="field space">
+                <span class="fa fa-lock"></span>
+                <input id="userName" type="text" required placeholder="User Name...">
+            </div>
+            <br/>
+            <div class="field">
+               <input type="submit" value="Register">
+            </div>
+        </form>
+    </center>
+</div>
+<script>
+    const passFields = document.querySelectorAll('.pass-key');
+    const showBtns = document.querySelectorAll('.show');
+
+    showBtns.forEach(showBtn => {
+        showBtn.addEventListener('click', function () {
+            passFields.forEach(passField => {
+                if (passField.type === "password") {
+                    passField.type = "text";
+                    showBtn.textContent = "HIDE";
+                    showBtn.style.color = "#3498db";
+                } else {
+                    passField.type = "password";
+                    showBtn.textContent = "SHOW";
+                    showBtn.style.color = "#222";
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        body {
+            width: 100%;
+            background-color: skyblue;
+        }
+
+        .container {
+            width: 30rem;
+            margin: 2rem auto;
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        .form {
+            background-color: #fff;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .form input {
+            flex: 1;
+            padding: 0.7rem;
+            border: none;
+            background-color: transparent;
+            outline: none;
+        }
+
+        .btn {
+            padding: 0.7rem;
+            background-color: darkblue;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+        }
+
+        .lists .todo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+        }
+
+        .todo span {
+            cursor: pointer;
+        }
+
+        .logout-btn {
+            display: block;
+            margin: 2rem auto;
+            padding: 0.7rem 1.5rem;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Hello <center><h2></h2></center></h1>
+        <script>
+            // Retrieve user data from sessionStorage
+             userData = sessionStorage.getItem('userData');
+            if (userData) {
+                // Parse user data from JSON string
+                const { userName, email } = JSON.parse(userData);
+                // Set content of the h1 element with userName and email
+                document.querySelector('h2').textContent = `${userName} (${email})`;
+            }
+         </script>
+        <form class="form" data-form>
+            <input type="text" placeholder="Todo..." data-input>
+            <button class="btn">Submit</button>
+        </form>
+        <div class="lists" data-lists></div>
+        <button class="logout-btn" data-logout>Logout</button>
+    </div>
+    <script src="todosUser.js"></script>
+</body>
+</html>
